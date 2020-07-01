@@ -1,0 +1,59 @@
+container {
+    height: 150vh;
+    width: 100%;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-rows: 82px 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    " header"
+    " tabs "
+    " tree "
+    " msa "
+}
+
+header { 
+    grid-area: header; 
+    background-color: $app-primary-color;
+}
+
+tabs {
+    grid-area: tabs;
+    margin: 1em 1em 0 1em;
+    background-color: $app-secondary-color;
+}
+
+tree {
+    grid-area: tree;
+    margin: 1em 1em 0 1em;
+    background-color: $app-secondary-color;
+}
+
+msa {
+    grid-area: msa;
+    margin: 1em 1em 0 1em;
+    background-color: $app-secondary-color;
+}
+
+@media (min-device-height:800px){
+    container {
+        height: 100vh; 
+    }
+}
+
+@media (min-device-width:1025px){
+    container {
+        height: 100vh; 
+        max-height: 100vh;
+        grid-template-rows: 82px 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+        " header header"
+        " tabs   tree"
+        " msa    tree"
+    }
+    
+    tabs { margin: .5em 0 0 1em; }
+    tree { margin: .5em 1em 1em 0; }
+    msa { margin: 0 0 1em 1em; }
+}

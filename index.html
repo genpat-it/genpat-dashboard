@@ -6,7 +6,51 @@
     <title>GenPat Dashboard</title>
 </head>
 <body>
-    Hello
+    <container>
+        <!-- Navbar -->
+        <header class="navbar fixed-top navbar-expand-lg navbar-dark element-shadow">
+            <div class="navbar-brand">
+                <img src="./src/img/IZSAM_white.png" alt="Logo IZS">
+            </div>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapse_target">
+                <span class="navbar-text text-white">
+                    <h5 class="app-title">GenPAT Dashboard - <small>Phylogenetic Data Explorer</small></h5>
+                    <small><a href="http://izs.it/IZS" target="_blank" class="text-white">
+                        Centro di Referenza Nazionale</a><br/>
+                        <span class="d-flex flex-direction-column">
+                            <div class="green" style="width: 60px; height:3px; background-color: green;"></div>
+                            <div class="white" style="width: 61px; height:3px; background-color: white;"></div>
+                            <div class="red"   style="width: 60px; height:3px; background-color: red;"></div>
+                        </span>
+                    </small>
+                </span>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-link text-white" id="show-tools-btn" data-toggle="modal" data-target="#infoModal"><i class="fas fa-question-circle fa-lg"></i> Info</button>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!-- Close Navbar -->
+
+        <tabs class="element-shadow">
+            <include src="tabs.html"></include>
+        </tabs>
+
+        <metadata class="element-shadow">
+            <!-- <include src="table.html"></include> -->
+        </metadata>
+
+        <tree class="element-shadow">
+            <include src="tree.html"></include>
+        </tree>
+        <msa class="element-shadow">
+            <include src="msa.html"></include>
+        </msa>
+    </container>
     <script src="./src/app.js"></script>
 </body>
 </html>

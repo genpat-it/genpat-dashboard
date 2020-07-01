@@ -1,0 +1,19 @@
+// App CSS Variables
+@import './partials/variables';
+
+// Bootstrap CSS
+$theme-colors: (
+  "primary": $app-primary-color,
+  "secondary": $app-secondary-color,
+  "info-dark": #3F729B,
+  "warning-dark":#FF8800,
+  "warning-darker":#e65100,
+  "danger-dark":#c62828
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// App CSS Partials
+@import './partials/layout';
+@import './partials/base';
+@import './partials/map';
