@@ -20,19 +20,19 @@ header {
 tabs {
     grid-area: tabs;
     margin: 1em 1em 0 1em;
-    background-color: $app-secondary-color;
+    background-color: $app-light-color;
 }
 
 tree {
     grid-area: tree;
     margin: 1em 1em 0 1em;
-    background-color: $app-secondary-color;
+    background-color: $app-light-color;
 }
 
 msa {
     grid-area: msa;
     margin: 1em 1em 0 1em;
-    background-color: $app-secondary-color;
+    background-color: $app-light-color;
 }
 
 @media (min-device-height:800px){
@@ -46,7 +46,7 @@ msa {
         height: 100vh; 
         max-height: 100vh;
         grid-template-rows: 82px 1fr 1fr;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1.5fr 1fr;
         grid-template-areas: 
         " header header"
         " tabs   tree"

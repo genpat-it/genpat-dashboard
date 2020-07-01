@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GenPat Dashboard</title>
+    <title>GenPAT Dashboard</title>
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 <body>
     <container>
@@ -29,7 +29,9 @@
                 </span>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <button class="btn btn-link text-white" id="show-tools-btn" data-toggle="modal" data-target="#infoModal"><i class="fas fa-question-circle fa-lg"></i> Info</button>
+                        <button class="btn btn-link text-white" id="show-tools-btn" data-toggle="modal" data-target="#infoModal">
+                            <i class="fas fa-question-circle fa-lg"></i> Info
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -69,19 +71,34 @@
             <div class="card-header bg-dark text-white">
     <i class="fas fa-project-diagram fa-fw"></i> Tree
 </div>
-<div class="card-body">
+<div class="card-body bg-light" id="tree-container">
     <div id="tree"></div>
 </div>
         </tree>
         <msa class="element-shadow">
             <div class="card-header bg-dark text-white">
-    <i class="fas fa-grip-vertical fa-fw"></i> Fasta
+    <i class="fas fa-grip-vertical fa-fw"></i> MSA Viewer
 </div>
 <div class="card-body">
     <div id="msa"></div>
 </div>
         </msa>
     </container>
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title"><i class="fas fa-question-circle fa-lg"></i> Application info</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body bg-primary text-white">
+                <p><i class="fas fa-cog fa-lg fa-fw fa-spin"></i>Under construction</p>
+            </div>
+        </div>
+    </div>
+</div>
     <script src="/app.a6a4d504.js"></script>
 </body>
 </html>

@@ -10475,19 +10475,19 @@ header {
 tabs {
   grid-area: tabs;
   margin: 1em 1em 0 1em;
-  background-color: #0095D0;
+  background-color: #f8f9fa;
 }
 
 tree {
   grid-area: tree;
   margin: 1em 1em 0 1em;
-  background-color: #0095D0;
+  background-color: #f8f9fa;
 }
 
 msa {
   grid-area: msa;
   margin: 1em 1em 0 1em;
-  background-color: #0095D0;
+  background-color: #f8f9fa;
 }
 
 @media (min-device-height: 800px) {
@@ -10500,7 +10500,7 @@ msa {
     height: 100vh;
     max-height: 100vh;
     grid-template-rows: 82px 1fr 1fr;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1.5fr 1fr;
     grid-template-areas: " header header" " tabs   tree" " msa    tree";
   }
 
