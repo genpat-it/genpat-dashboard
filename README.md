@@ -28,7 +28,7 @@ This is a pure javascript client application, easy to install and deploy in your
     
 ## Accepted parameters
   * **geo**: path to geojson point collection
-  * **tre**: path to phylogenetic tree in nwk format
+  * **tree**: path to phylogenetic tree in nwk format
   * **treetitle**: a name for the tree
   * **fasta**: path to fasta file (it will be represented using the integrated MSA viewer)
   * **meta**: path to metadata table in json format
