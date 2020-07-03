@@ -1,7 +1,7 @@
 # genpat-dashboard
 GenPat-Dashboard web application (still under development)
 
-## Installation
+## Install
 This is a pure javascript client application, easy to install and deploy in your own environment. Follow these steps:
 
   * Clone the repo in your local working directory 
@@ -18,8 +18,8 @@ This is a pure javascript client application, easy to install and deploy in your
     ```
     npm run build
     ```
-## Usage
-  * Start GenPAT-Dashboard on the development server at localhost:1234
+## Run the demo
+  * Cd to your working directory and start GenPAT-Dashboard on the development server at localhost:1234
     ```
     npm run start
     ```
