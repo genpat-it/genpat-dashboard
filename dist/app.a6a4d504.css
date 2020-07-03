@@ -10553,6 +10553,10 @@ html, body {
   width: 100%;
   height: calc(50vh - 107px);
 }
+
+.smenubar .smenubar_alink {
+  border-radius: 0px !important;
+}
 .ol-box {
   box-sizing: border-box;
   border-radius: 2px;
