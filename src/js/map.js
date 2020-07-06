@@ -48,6 +48,14 @@ const createMap = (points) => {
         })
     });
 
+    var pointStyle_sel_click = new Style({
+        image: new Circle({
+            radius: 6,
+            fill: new Fill({color: '#FFBB33'}),
+            stroke: new Stroke({color: '#FF8800', width: 3})
+        })
+    });
+
     // LAYER
     var pointLayer = new VectorImageLayer({
         source: new VectorSource({
@@ -74,6 +82,7 @@ const createMap = (points) => {
         }
         
         // POPOLA IL LAYER
+        // *******************************************
         $.getJSON(points, function(data) {
             var featureCollection = new GeoJSON({featureProjection:'EPSG:3857'}).readFeatures(data);
 			pointLayer.getSource().addFeatures(featureCollection);
@@ -84,6 +93,7 @@ const createMap = (points) => {
         });
         
         // SELEZIONE "MOUSEOVER" da mappa verso albero
+        // *******************************************
         var pointSelect_mouseover = new Select({
             layers:[ pointLayer ],
             condition: pointerMove,
@@ -125,6 +135,7 @@ const createMap = (points) => {
         });
 
         // SELEZIONE "MOUSEOVER" da albero verso mappa
+        // *******************************************
         tree.on('mousemove',function(evt){
             var hovered = [];
             $.each(tree.leaves,function(i,leave){
@@ -146,7 +157,65 @@ const createMap = (points) => {
                     }
                 });
             };
-            
+        });
+
+        // SELEZIONE "MOUSECLICK" da mappa verso albero
+        // *******************************************
+        var pointSelect_click = new Select({
+            layers:[ pointLayer ],
+            condition: click,
+            style: function(feature){
+                return pointStyle_sel_click;
+            }
+        });
+
+        // Attiva interazione mouseover
+		map.addInteraction(pointSelect_click);
+        pointSelect_click.setActive(true);
+        
+        pointSelect_click.getFeatures().on('add',function(evt){
+            // Codice del punto selezionato
+            if (evt.element.getProperties().codice){
+                var codice = evt.element.getProperties().codice;
+            } else {
+                var codice = evt.element.getProperties().CODICE;
+            }
+            // Selezione del leave corrispondente sull'albero
+            tree.branches[codice].selected = true;
+            tree.draw();
+        });
+        
+        pointSelect_click.getFeatures().on('remove',function(evt){
+            // Codice del punto non piu selezionato
+            if (evt.element.getProperties().codice){
+                var codice = evt.element.getProperties().codice;
+            } else {
+                var codice = evt.element.getProperties().CODICE;
+            }
+            // Rimuove selezione del leave
+            tree.clearSelect();
+        });
+
+        // SELEZIONE "MOUSECLICK" da albero verso mappa
+        // *******************************************
+        tree.on("updated",function({property,nodeIds}){
+            // sconsole.log(property,nodeIds);
+            pointSelect_click.getFeatures().clear();
+            // Selezione dei punti sulla mappa
+            if (nodeIds.length > 0){
+                pointLayer.getSource().forEachFeature(function(feature){
+                    $.each(nodeIds,function(i,node){
+                        if (feature.get('codice') == node){
+                            pointSelect_click.getFeatures().push(feature);
+                        }
+                        if (feature.get('CODICE') == node){
+                            pointSelect_click.getFeatures().push(feature);
+                        } 
+                    });
+                });
+            } else {
+                pointSelect_click.getFeatures().clear();
+            }
         });
 
     } else {
