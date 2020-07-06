@@ -30,7 +30,7 @@ This is a pure javascript client application, easy to install and deploy in your
   * **geo**: path to geojson point collection
   * **tree**: path to phylogenetic tree in nwk format
   * **treetitle**: a name for the tree
-  * **fasta**: path to fasta file (it will be represented using the integrated MSA viewer)
+  * **fasta**: path to fasta file (it will be represented using the integrated <a href="https://msa.biojs.net/" target="_blank">MSA</a> viewer)
   * **meta**: path to metadata table in json format
 
 <img src="screenshot.png" alt="Dashboard view"/>
