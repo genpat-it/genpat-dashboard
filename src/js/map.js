@@ -2,7 +2,6 @@ import 'ol/ol.css';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import { transform } from 'ol/proj';
-// import Projection from 'ol/proj/Projection';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 import GeoJSON from 'ol/format/GeoJSON';
@@ -11,6 +10,7 @@ import VectorSource from 'ol/source/Vector';
 import { Fill, Stroke, Style, Text, Image, Circle } from 'ol/style';
 import Select from 'ol/interaction/Select';
 import {click, pointerMove, altKeyOnly} from 'ol/events/condition';
+import Overlay from 'ol/Overlay'
 
 import $ from 'jquery';
 
@@ -30,6 +30,12 @@ const createMap = (points) => {
             zoom: 4 // set to 5 to center on Italy
         })
     });
+
+    // Popup overlay
+    var popup = new Overlay({
+        element: document.getElementById('popup')
+    });
+    map.addOverlay(popup);
 
     // STILI
     var pointStyle = new Style({
@@ -65,15 +71,44 @@ const createMap = (points) => {
     	    return pointStyle;
         }
     });
+    pointLayer.set('name','Punti');
     pointLayer.setZIndex(10);
     map.addLayer(pointLayer);
 
     map.on('pointermove', function(e){
-        // Stile cursore mouse
-        var pixel = map.getEventPixel(e.originalEvent);
-        var hit = map.hasFeatureAtPixel(pixel);
-        map.getViewport().style.cursor = hit ? 'pointer' : '';
+        if (e.dragging) return;
+        var pixel = e.map.getEventPixel(e.originalEvent);
+        var hit = e.map.forEachFeatureAtPixel(pixel, function (feature, layer) {
+            if (layer){
+                var coordinate = e.coordinate;
+                popup.setPosition(coordinate);
+                var popupContent = document.getElementById('popup-content');
+                if (layer.get('name')=='Punti'){
+                    popupContent.innerHTML = "<p class='text-warning'><strong>"+feature.getProperties().codice+"</strong></p>"
+                                            + "<span class='text-white'>Sampling date: "+feature.get('data')+"</span>"
+                                            + "<br/><span class='text-white'>Matrix: "+parseNull(feature.getProperties().matrice)+"</span>"
+                                            + "<br/><span class='text-white'>AMR: "+parseNull(feature.getProperties().amr)+"</span>"
+                                            + "<br/><span class='text-white'>Sequence Type (MSLT): "+parseNull(feature.getProperties().mslt)+"</span>"
+                                            + "<br/><span class='text-white'>Pulsotype (PFGE): "+parseNull(feature.getProperties().pulsotipo)+"</span>"
+                }
+                return layer.get('name') === 'Punti'
+            }
+        });
+        if (hit){
+            e.map.getTargetElement().style.cursor = 'pointer';
+        } else {
+            popup.setPosition(undefined);
+            e.map.getTargetElement().style.cursor = '';
+        }
     });
+
+    const parseNull = (value) => {
+        if (value == null){
+            return "-";
+        } else {
+            return value;
+        }
+    };
 
     if (points) { 
 
