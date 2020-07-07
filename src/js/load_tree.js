@@ -50,4 +50,10 @@ const createTree = (nwk_file, tree_title) => {
 
 }
 
+$('.set-tree-type').click((e) => {
+    var text = e.target.innerText.toLocaleLowerCase();
+    tree.setTreeType(text);
+})
+
+
 export { createTree, tree, leaveIDs }

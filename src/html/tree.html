@@ -1,5 +1,17 @@
-<div class="card-header bg-dark text-white">
-    <i class="fas fa-project-diagram fa-fw"></i> <span id="tree_title"></span>
+<div class="card-header bg-dark text-white d-flex align-items-center p-2">
+    <span class="flex-grow-1">
+        <i class="fas fa-project-diagram fa-fw"></i> <span id="tree_title"></span>
+    </span>
+    <span class="dropdown">
+        <a href="#" class="dropdown-toggle text-white" data-toggle="dropdown">Set Tree type <span class="caret"></span></a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item set-tree-type" href="#">Rectangular</a>
+            <a class="dropdown-item set-tree-type" href="#">Diagonal</a>
+            <a class="dropdown-item set-tree-type" href="#">Circular</a>
+            <a class="dropdown-item set-tree-type" href="#">Radial</a>
+            <a class="dropdown-item set-tree-type" href="#">Hierarchical</a>
+        </div>
+    </span>
 </div>
 <div class="card-body bg-light" id="tree-container">
     <div id="tree"></div>

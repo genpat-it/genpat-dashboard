@@ -65,7 +65,7 @@ const createMap = (points) => {
     	    return pointStyle;
         }
     });
-
+    pointLayer.setZIndex(10);
     map.addLayer(pointLayer);
 
     map.on('pointermove', function(e){
