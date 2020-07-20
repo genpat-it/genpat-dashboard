@@ -41,7 +41,7 @@
     "chartjs-plugin-zoom": "^0.7.5",
     "chroma-js": "^2.1.0",
     "jquery": "^3.5.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "msa": "^1.0.3",
     "ol": "^6.3.1",
