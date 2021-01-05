@@ -1,6 +1,8 @@
 import Phylocanvas from 'phylocanvas';
 import ajax from 'phylocanvas-plugin-ajax';
+import metadata from 'phylocanvas-plugin-metadata';
 Phylocanvas.plugin(ajax);
+Phylocanvas.plugin(metadata);
 
 import $ from 'jquery';
 
@@ -26,10 +28,24 @@ const createTree = (nwk_file, tree_title) => {
     // tree.scalebar.font = 12;
     tree.setSize(550,750);
     tree.setTreeType('rectangular');
+    tree.alignLabels = true;
+
+    tree.on('beforeFirstDraw', function () {
+        for (var i = 0; i < tree.leaves.length; i++) {
+          tree.leaves[i].data = {
+            column1: {
+              colour: '#3C7383',
+              label: 'Label' + (i + 1),
+            },
+            column2: '#9BB7BF',
+            column3: '#3C7383',
+            column4: '#9BB7BF',
+          };
+        }
+    });
 
     // Al caricamento dell'albero
     tree.on("loaded",function(e){
-        tree.alignlabels = true;
         // Per ogni leave
         leaveIDs = [];
         $.each(tree.leaves,function(i,leave){

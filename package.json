@@ -47,6 +47,8 @@
     "ol": "^6.3.1",
     "phylocanvas": "^2.8.1",
     "phylocanvas-plugin-ajax": "^1.0.0",
-    "popper.js": "^1.16.1"
+    "phylocanvas-plugin-metadata": "^2.2.0",
+    "popper.js": "^1.16.1",
+    "tabulator-tables": "^4.9.3"
   }
 }
