@@ -4,11 +4,14 @@ import '@fortawesome/fontawesome-free/js/all';
 import $ from 'jquery';
 import 'popper.js';
 import 'bootstrap';
+// Tabulator CSS
+import 'tabulator-tables/dist/css/bootstrap/tabulator_bootstrap4.min.css';
 
 // Application modules
 import { createTree } from './js/load_tree';
 import { createMsaViewer } from './js/load_fasta';
 import { createMap } from './js/map';
+import { createTable } from './js/load_metadata';
 
 // Get Init data
 const getInitData = () => {
@@ -40,8 +43,9 @@ const getInitData = () => {
 
 var initParams = getInitData();
 
-console.log(initParams)
+console.log(initParams);
 
-createTree( initParams.tree.path, initParams.tree.title )
-createMsaViewer( initParams.fasta.path )
-createMap( initParams.geo.path )
+createTree( initParams.tree.path, initParams.tree.title );
+createMsaViewer( initParams.fasta.path );
+createMap( initParams.geo.path );
+createTable( initParams.meta.path );

@@ -32,6 +32,4 @@ const createMsaViewer = (fasta_file) => {
 
 }
 
-// msaViewer()
-
 export { createMsaViewer }
