@@ -1,8 +1,11 @@
 import Phylocanvas from 'phylocanvas';
 import ajax from 'phylocanvas-plugin-ajax';
 import metadata from 'phylocanvas-plugin-metadata';
+import contextMenu from 'phylocanvas-plugin-context-menu';
+
 Phylocanvas.plugin(ajax);
 Phylocanvas.plugin(metadata);
+Phylocanvas.plugin(contextMenu);
 
 import $ from 'jquery';
 
